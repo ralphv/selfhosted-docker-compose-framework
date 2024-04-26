@@ -39,7 +39,7 @@
 
 ### The default setup
 * The default setup includes
-  * `sample-app`: This is your template to adding more apps
+  * `sample-app`: This is your template for adding more apps. Each app lives in its own folder.
   * `dozzle`: Is always a good idea to have so you can check containers metrics/logs at a glance.
   * `watchtower`: Is defined to allow the auto update of some containers, some people prefer not to use it, in this case you can just delete the folder.
 
