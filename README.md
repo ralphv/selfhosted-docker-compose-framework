@@ -33,7 +33,7 @@
     * Specify the expose as a way to self document what this container exposes. If you are using a reverse proxy then you don't need to expose ports to your host machine. If you are defining mapped ports then expose is not needed.
     * Try to define the properties for your services in alphabetical order to retain a common familiar order across all setups.
       * for example `container_name` comes before `expose`. `c` before `e`
-    * Use the `main-network` always unless you the app has the need to define its own network for one reason or another.
+    * Use the `main-network` always unless the app has the need to define its own network for one reason or another.
     * Define other networks within the apps that need them.
     * Depending on what dashboard you are using, you may want to define some labels.
 
