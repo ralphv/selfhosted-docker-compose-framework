@@ -1,0 +1,32 @@
+x-common: &common
+  environment:
+    - TZ=${DOCKER_COMPOSE_TZ}
+    - PUID=${DOCKER_COMPOSE_PUID}
+    - PGID=${DOCKER_COMPOSE_PGID}
+    - GENERIC_TIMEZONE=${DOCKER_COMPOSE_TZ}
+  restart: ${DOCKER_COMPOSE_RESTART_VALUE}
+  mem_limit: ${DOCKER_COMPOSE_MEM_LIMIT_XTINY}
+  cpus: ${DOCKER_COMPOSE_CPU_XTINY}
+
+services:
+  dozzle:
+    <<: *common
+    container_name: dozzle
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    image: amir20/dozzle:latest
+    labels:
+      - flame.type=application
+      - flame.name=Dozzle
+      - flame.url=https://dozzle.your-domain.com
+      - flame.icon=kubernetes
+      - homepage.group=Docker
+      - homepage.name=Dozzle
+      - homepage.icon=dozzle.png
+      - homepage.href=https://dozzle.your-domain.com
+    networks:
+      main-network:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro

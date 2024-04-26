@@ -1,0 +1,18 @@
+x-common: &common
+  environment:
+    - TZ=${DOCKER_COMPOSE_TZ}
+    - PUID=${DOCKER_COMPOSE_PUID}
+    - PGID=${DOCKER_COMPOSE_PGID}
+    - GENERIC_TIMEZONE=${DOCKER_COMPOSE_TZ}
+  restart: ${DOCKER_COMPOSE_RESTART_VALUE}
+  mem_limit: ${DOCKER_COMPOSE_MEM_LIMIT_XTINY}
+  cpus: ${DOCKER_COMPOSE_CPU_TINY}
+
+services:
+  watchtower:
+    <<: *common
+    command: dozzle
+    container_name: watchtower
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

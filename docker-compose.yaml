@@ -1,0 +1,7 @@
+include:
+  - apps/dozzle/docker-compose.yaml
+  - apps/watchtower/docker-compose.yaml
+  - apps/sample-app/docker-compose.yaml
+
+networks:
+  main-network:

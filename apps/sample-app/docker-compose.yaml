@@ -1,0 +1,31 @@
+x-common: &common
+  environment:
+    - TZ=${DOCKER_COMPOSE_TZ}
+    - PUID=${DOCKER_COMPOSE_PUID}
+    - PGID=${DOCKER_COMPOSE_PGID}
+    - GENERIC_TIMEZONE=${DOCKER_COMPOSE_TZ}
+  restart: ${DOCKER_COMPOSE_RESTART_VALUE}
+  mem_limit: ${DOCKER_COMPOSE_MEM_LIMIT_XTINY}
+  cpus: ${DOCKER_COMPOSE_CPU_XTINY}
+
+services:
+  sample-app:
+    <<: *common
+    container_name: sample-app
+    expose:
+      - 8182
+    image: ralphv/simple-node-express
+    labels:
+      # Depending on what dashboard you use, you might want to add labels here
+      - flame.type=application
+      - flame.name=Sample
+      - flame.url=https://sample.your-domain.com
+      - homepage.group=Samples
+      - homepage.name=Sample
+      - homepage.href=https://sample.your-domain.com
+    networks:
+      main-network:
+    volumes:
+      - ${DOCKER_COMPOSE_STATEFUL_VOLUMES_ROOT}/sample/data:/data
+      - ${DOCKER_COMPOSE_STATEFUL_LOCKED_VOLUMES_ROOT}/sample/postgres:/db
+      - ${DOCKER_COMPOSE_STATELESS_VOLUMES_ROOT}/sample/cache:/cache
