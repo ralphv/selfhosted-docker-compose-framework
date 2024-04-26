@@ -1,4 +1,4 @@
-## Self-hosted docker compose framework
+## Self-hosted docker compose framework v 0.1.0
 
 ### Introduction
 * This repo is a sample framework that should cover best practices for docker compose usage.
